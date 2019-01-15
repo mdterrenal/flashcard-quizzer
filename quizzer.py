@@ -24,4 +24,17 @@ def parse_text():
     return flashcards
 
 
+def quiz_user(flashcards):
+    """Continuously quiz the user by asking for the correct answer.
+
+    Randomly choose a card from a list of flashcards and provide
+    the question. Prompt for an answer and check if the user's answer
+    is correct.
+    """
+    
+    while True:
+        chosen_card = random.choice(flashcards)
+
+
+
 parse_text()
