@@ -34,9 +34,10 @@ def quiz_user(flashcards):
     """
 
     while True:
+        print("If you would like to quit, enter the word quit")
         question, answer = random.choice(flashcards)
         user_answer = input(question + '? ').strip().lower()
-        if 'quit' in answer:
+        if 'quit' in user_answer:
             print("Goodbye.")
             break
         if user_answer == answer.lower():
