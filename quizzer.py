@@ -19,6 +19,9 @@ def parse_text():
         flashcards = flashcards.decode("utf-8")
     except HTTPError:
         print('The file provided is not available. Please try again.')
+    flashcards = flashcards.strip().split('\n')
+    flashcards = [card.split(',') for card in flashcards]
+    return flashcards
 
 
 parse_text()
