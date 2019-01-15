@@ -2,6 +2,7 @@
 
 from urllib.request import urlopen
 from urllib.error import HTTPError
+import random
 
 
 def parse_text():
@@ -20,7 +21,7 @@ def parse_text():
     except HTTPError:
         print('The file provided is not available. Please try again.')
     flashcards = flashcards.strip().split('\n')
-    flashcards = [card.split(',') for card in flashcards]
+    flashcards = [card.strip().split(',') for card in flashcards]
     return flashcards
 
 
@@ -31,10 +32,18 @@ def quiz_user(flashcards):
     the question. Prompt for an answer and check if the user's answer
     is correct.
     """
-    
+
     while True:
-        chosen_card = random.choice(flashcards)
+        question, answer = random.choice(flashcards)
+        user_answer = input(question + '? ').strip().lower()
+        if 'quit' in answer:
+            print("Goodbye.")
+            break
+        if user_answer == answer.lower():
+            print("Correct! Nice job.")
+        else:
+            print("Incorrect. The correct answer is {0}.".format(answer))
 
 
-
-parse_text()
+flashcards = parse_text()
+quiz_user(flashcards)
